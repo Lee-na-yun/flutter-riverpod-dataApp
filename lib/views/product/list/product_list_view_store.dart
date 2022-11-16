@@ -21,6 +21,11 @@ class ProductListViewStore extends StateNotifier<List<Product>> {
   }
 
   void removeProduct(int id) {
-    state = state.where((product) => product.id != id).toList();
+    state =
+        state.where((product) => product.id != id).toList(); //where = 걸러내서 복사하기
+  }
+
+  void updateProduct(Product productRespDto) {
+    state = state.map((productRespDto) => productRespDto).toList();
   }
 }

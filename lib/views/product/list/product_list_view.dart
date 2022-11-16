@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_dataapp/controller/product_controller.dart';
 import 'package:riverpod_dataapp/domain/product/product.dart';
+import 'package:riverpod_dataapp/domain/product/product_http_repository.dart';
+import 'package:riverpod_dataapp/views/components/my_alert_dialog.dart';
 import 'package:riverpod_dataapp/views/product/list/product_list_view_store.dart';
 
-class ProductListPage extends ConsumerWidget {
-  const ProductListPage({Key? key}) : super(key: key);
+class ProductListView extends ConsumerWidget {
+  const ProductListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,6 +36,10 @@ class ProductListPage extends ConsumerWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           subtitle: Text("${pm[index].price}"),
+          onLongPress: () {
+            pc.updateById(
+                pm[index].id, Product(0, "${pm[index].price}", 20000));
+          },
         ),
       ),
     );
