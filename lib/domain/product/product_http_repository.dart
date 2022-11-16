@@ -1,4 +1,10 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_dataapp/domain/product/product.dart';
+
+// 생성자주입
+final productHttpRepository = Provider<ProductHttpRepository>((ref) {
+  return ProductHttpRepository();
+});
 
 class ProductHttpRepository {
   // 가짜데이터
