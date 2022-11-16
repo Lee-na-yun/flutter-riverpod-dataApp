@@ -7,6 +7,7 @@ import 'package:riverpod_dataapp/domain/product/product_http_repository.dart';
 import 'package:riverpod_dataapp/views/components/my_alert_dialog.dart';
 import 'package:riverpod_dataapp/views/product/list/product_list_view_store.dart';
 
+// view는 컨트롤러를 호출하기만 하면 됨
 class ProductListView extends ConsumerWidget {
   const ProductListView({Key? key}) : super(key: key);
 
@@ -37,8 +38,7 @@ class ProductListView extends ConsumerWidget {
           ),
           subtitle: Text("${pm[index].price}"),
           onLongPress: () {
-            pc.updateById(
-                pm[index].id, Product(0, "${pm[index].price}", 20000));
+            pc.updateById(pm[index].id, Product(0, "${pm[index].name}", 20000));
           },
         ),
       ),

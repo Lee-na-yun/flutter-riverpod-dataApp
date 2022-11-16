@@ -26,6 +26,12 @@ class ProductListViewStore extends StateNotifier<List<Product>> {
   }
 
   void updateProduct(Product productRespDto) {
-    state = state.map((productRespDto) => productRespDto).toList();
+    state = state.map((product) {
+      if (product.id == productRespDto.id) {
+        return productRespDto;
+      } else {
+        return product;
+      }
+    }).toList();
   }
 }

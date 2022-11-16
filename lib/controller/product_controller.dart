@@ -15,6 +15,7 @@ final productController = Provider<ProductController>((ref) {
 *  컨트롤러: 비지니스 로직 담당
 * - 레파지토리에게 응답 받고
 * - view에 전달
+* - return 불가
 */
 class ProductController {
   final context = navigatorKey.currentContext!; // 느낌표(!) 넣어주면 null이 아니라는 뜻
@@ -45,9 +46,9 @@ class ProductController {
     }
   }
 
-  void updateById(int id, Product productDto) {
+  void updateById(int id, Product productReqDto) {
     Product productRespDto =
-        _ref.read(productHttpRepository).updateById(id, productDto);
+        _ref.read(productHttpRepository).updateById(id, productReqDto);
     _ref.read(productListViewStore.notifier).updateProduct(productRespDto);
   }
 }
